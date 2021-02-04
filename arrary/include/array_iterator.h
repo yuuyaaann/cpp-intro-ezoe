@@ -17,7 +17,7 @@ struct array_iterator{
 	array_iterator & operator --();
 
 	// 今参照している要素を返す
-	typename Arrary::reference operator *() {
+	typename Arrary::const_reference operator *() {
 		return a[i];
 	}
 

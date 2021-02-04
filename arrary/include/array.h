@@ -6,9 +6,32 @@ struct array {
 	T storage[N] ;
 
 	using reference = T & ;
+	using const_reference = T const & ;
 
-	T & operator [] ( std::size_t i ) { 
+	/**
+	reference operator [] ( std::size_t i ) { 
 		 return storage[i] ; 
+	} 
+
+	reference front() { 
+		 return storage[0] ; 
+	} 
+
+	reference back() { 
+		 return storage[N - 1] ; 
+	} 
+	*/
+
+	const_reference operator [] ( std::size_t i ) { 
+		 return storage[i] ; 
+	} 
+
+	const_reference front() { 
+		 return storage[0] ; 
+	} 
+
+	const_reference back() { 
+		 return storage[N - 1] ; 
 	} 
 	
 	// イテレーターを型
