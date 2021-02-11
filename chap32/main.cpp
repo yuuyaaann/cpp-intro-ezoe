@@ -30,6 +30,40 @@ struct Point
 
 };
 
+template <typename T>
+class own {
+private:
+	T *ptr;
+public:
+	// コンストラクタ
+	own() : ptr(new T) {
+
+	}
+
+	// デストラクタ
+	~own() {
+		delete ptr;
+	}
+
+	// デフォルトのコピーコンストラクタを使う場合
+	// ただし、この場合だと、所有したつもりになって破棄されている可能性がある
+	//own( const own &) = default;
+	own (const own & r) : ptr (new T(*r.ptr)) {}
+	own & operaotr = (const own &) {
+		// 自分自身の代入ではなければ実施しない
+		if(this != &r) {
+			*ptr = *r.ptr;
+		}
+		return *this;
+	}
+
+	T * get() const {
+		return ptr;
+	} 
+
+};
+
+
 int main () {
 
 	Point a(1,2,3);
