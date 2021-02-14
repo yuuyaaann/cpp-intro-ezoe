@@ -1,4 +1,4 @@
-#include "all.h"
+#include "../../all.h"
 #include "array_iterator.h"
 
 template <typename T, std::size_t N>
@@ -8,7 +8,7 @@ struct array {
 	using reference = T & ;
 	using const_reference = T const & ;
 
-	/**
+#if defined(REFERENCE)
 	reference operator [] ( std::size_t i ) { 
 		 return storage[i] ; 
 	} 
@@ -20,7 +20,8 @@ struct array {
 	reference back() { 
 		 return storage[N - 1] ; 
 	} 
-	*/
+
+#else
 
 	const_reference operator [] ( std::size_t i ) { 
 		 return storage[i] ; 
@@ -33,6 +34,8 @@ struct array {
 	const_reference back() { 
 		 return storage[N - 1] ; 
 	} 
+
+#endif
 	
 	// イテレーターを型
 	// array_iterator は、 array_iterator<array<T,N>> と書いたことと一緒

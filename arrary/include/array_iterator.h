@@ -1,4 +1,4 @@
-#include "all.h"
+#include "../../all.h"
 
 template <typename Arrary>
 struct array_iterator{
